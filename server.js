@@ -38,15 +38,22 @@ app.get("/notes", function(req, res){
 });
 
 app.get("/api/notes", function(req, res){
-    let notesJSON = fs.readFileSync("db/db.json");
+    let notesJSON = fs.readFileSync("db/db.json") ||[];
     console.log(`notesJSON = ${notesJSON}`);
-    res.json(JSON.parse(notesJSON));
+    if(notesJSON){
+      res.json(JSON.parse(notesJSON));
+    } else {
+      res.send("There are no stored notes yet.");
+    }
+    
 });
 
 app.post("/api/notes", function(req, res){
+    let currentNotes = fs.readFileSync("db/db.json") || [];
+    let updatedNotesArray = JSON.parse(currentNotes) || [];
     let noteToSave = req.body;
-    currentNotes = fs.readFileSync("db/db.json");
-    let updatedNotesArray = JSON.parse(currentNotes);
+    noteToSave.id = updatedNotesArray.length + 1;
+    updatedNotesArray = JSON.parse(currentNotes) || [];
     updatedNotesArray.push(noteToSave);
     fs.writeFileSync("db/db.json", JSON.stringify(updatedNotesArray));
     res.send(console.log("Success!"));
