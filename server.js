@@ -40,27 +40,27 @@ app.post("/api/notes", function(req, res){
     note.id = retrieveMasterID.masterID + 1;
   //Updates the masterID object with the new note's ID
     masterID = {"masterID": note.id};
-  //Add the new note to the saved notes array
+  //Adds the new note to the saved notes array
     updatedNotesArray.push(note);
-  //Save the new notes array to the db.json file (overwrites old file)
+  //Saves the new notes array to the db.json file (overwrites old file)
     fs.writeFileSync("db/db.json", JSON.stringify(updatedNotesArray));
-  //Save the updated masterID to the id.json file (overwrites old file)
+  //Saves the updated masterID to the id.json file (overwrites old file)
     fs.writeFileSync("db/id.json", JSON.stringify(masterID));
   //console.log success
     res.send(console.log("Success! Your new note has been saved to the db.json file and the master id has been updated."));
 });
 
   app.delete("/api/notes/:id", function(req, res){
-    //Retrieve the selected note ID from the request parameters placeholder ":/id"
+    //Retrieves the selected note ID from the request parameters placeholder ":/id"
     let selectedID = req.params.id;
-    //Retrieve the saved notes array from the db.json file
+    //Retrieves the saved notes array from the db.json file
     let notesArray = JSON.parse(fs.readFileSync("db/db.json")) ||[];
-    //Loop through the notes array to find the note whose ID matches the selected ID
+    //Loops through the notes array to find the note whose ID matches the selected ID
     for(let i = 0; i < notesArray.length; i++){
       if(parseInt(notesArray[i].id) == selectedID){
-        //splice the selected note out of the saved notes array
+        //Splices the selected note out of the saved notes array
         notesArray.splice(i, 1);
-        //save the new notes array (minus the deleted note) to the db.json file (overwrites old file)
+        //Saves the new notes array (minus the deleted note) to the db.json file (overwrites old file)
         fs.writeFileSync("db/db.json", JSON.stringify(notesArray));
       }
     }
