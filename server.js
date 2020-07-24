@@ -23,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-
+// Master ID for notes
+let masterID = 0;
 
 // ================================================================================
 // ROUTES
@@ -37,6 +38,7 @@ app.get("/notes", function(req, res){
     res.sendFile(path.join(__dirname, "/public/notes.html"))
 });
 
+//API
 app.get("/api/notes", function(req, res){
     let notesJSON = fs.readFileSync("db/db.json") ||[];
     console.log(`notesJSON = ${notesJSON}`);
@@ -49,14 +51,20 @@ app.get("/api/notes", function(req, res){
 });
 
 app.post("/api/notes", function(req, res){
-    let currentNotes = fs.readFileSync("db/db.json") || [];
-    let updatedNotesArray = JSON.parse(currentNotes) || [];
-    let noteToSave = req.body;
-    noteToSave.id = updatedNotesArray.length + 1;
-    updatedNotesArray = JSON.parse(currentNotes) || [];
-    updatedNotesArray.push(noteToSave);
+    let retrieveID = JSON.parse(fs.readFileSync("db/id.json")) || 0;
+    console.log(`The retrieved ID = ${retrieveID}`);
+    let updatedNotesArray = JSON.parse(fs.readFileSync("db/db.json")) || [];
+    let note = req.body;
+    console.log(`RetrieveID = ${retrieveID.masterID}`)
+    note.id = retrieveID.masterID + 1;
+    console.log(`note.id = ${note.id}`);
+    masterID = {"masterID": note.id};
+    console.log(`The masterID = ${masterID}`);
+    updatedNotesArray.push(note);
     fs.writeFileSync("db/db.json", JSON.stringify(updatedNotesArray));
-    res.send(console.log("Success!"));
+    fs.writeFileSync("db/id.json", JSON.stringify(masterID));
+
+    return res.send(console.log("Success!"));
 });
 
 // =============================================================================
