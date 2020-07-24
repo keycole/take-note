@@ -11,6 +11,6 @@
   "dependencies": {
     "express": "^4.16.4",
     "jest": "^26.1.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.5.1"
   }
 }
