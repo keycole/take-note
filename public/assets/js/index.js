@@ -95,7 +95,7 @@ var rebuildNoteArea = function(){
 
 //Function for processing and saving the edited note after
 //the Update Note button has been clicked
-var processEditNote = async function(newNote){
+var processEditNote = function(newNote){
     activeNote = newNote;
     editNote(newNote).then(function(data){;
     rebuildNoteArea();
