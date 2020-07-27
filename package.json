@@ -5,11 +5,9 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC"
