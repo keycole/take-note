@@ -96,17 +96,12 @@ var rebuildNoteArea = function(){
 //Function for processing and saving the edited note after
 //the Update Note button has been clicked
 var processEditNote = async function(newNote){
-  activeNote = newNote;
-  try{
-    editNote(newNote);
-
-    await rebuildNoteArea();
-          getAndRenderNotes();
-          renderActiveNote(activeNote);
-
-  } catch(err) {
-    console.log(`The error inside processEditNote = ${err}`);
-  };
+    activeNote = newNote;
+    editNote(newNote).then(function(data){;
+    rebuildNoteArea();
+    getAndRenderNotes();
+    renderActiveNote(activeNote);
+  });
 };
 
 // Get the note data from the inputs, save it to the db and update the view
