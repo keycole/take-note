@@ -29,7 +29,7 @@ const saveNote = function (note) {
 // A function for editing a note from the db
 const editNote = function (newNote) {
   return $.ajax({
-    url: "api/notes/" + newNote.id,
+    url: "/api/notes/" + newNote.id,
     data: newNote,
     method: "POST"
   });
