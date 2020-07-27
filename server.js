@@ -18,7 +18,7 @@ app.get("/", function(req, res){
 });
 
 app.get("/notes", function(req, res){
-    res.sendFile(path.join(__dirname, "/public/notes.html"))
+    res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 // >> API ROUTES
@@ -29,6 +29,7 @@ app.get("/api/notes", function(req, res){
     }
 });
 
+// Saves New Note
 app.post("/api/notes", function(req, res){
   //Retrieves the last id from the id.json file
     let retrieveMasterID = JSON.parse(fs.readFileSync("db/id.json")) || 0;
@@ -47,7 +48,29 @@ app.post("/api/notes", function(req, res){
   //Saves the updated masterID to the id.json file (overwrites old file)
     fs.writeFileSync("db/id.json", JSON.stringify(masterID));
   //console.log success
-    res.send(console.log("Success! Your new note has been saved to the db.json file and the master id has been updated."));
+    res.send(
+      console.log("Success! Your new note has been saved to the db.json file and the master id has been updated."));
+});
+
+//Saves Edited Note
+app.post("/api/notes/:id", function(req, res){
+  //Retrieves the updated note information
+  let editedNote = req.body;
+  editedNote.id = parseInt(req.params.id);
+  //Retrieves the saved notes array from the db.json file
+  let notesArray = JSON.parse(fs.readFileSync("db/db.json")) ||[];
+  //Loops through the notes array to find the note whose ID matches the edited note ID
+  for(let i = 0; i < notesArray.length; i++){
+    if(parseInt(notesArray[i].id) == editedNote.id){
+      //Splices the edited note in place of the old note in the notes array
+      notesArray.splice(i, 1, editedNote);
+      //Saves the updated notes array to the db.json file (overwrites old file)
+      fs.writeFileSync("db/db.json", JSON.stringify(notesArray));
+    }
+  }
+  //console.log success
+  console.log("Successful edit! The db.json file has been updated.");
+  res.json(JSON.parse(fs.readFileSync("db/db.json")));
 });
 
   app.delete("/api/notes/:id", function(req, res){
@@ -65,7 +88,8 @@ app.post("/api/notes", function(req, res){
       }
     }
     //console.log success
-    res.send(console.log("Successful deletion! The db.json file has been updated."));
+    console.log("Successful deletion! The db.json file has been updated.");
+    res.json(JSON.parse(fs.readFileSync("db/db.json")));
   });
 
 // LISTENER to start the server

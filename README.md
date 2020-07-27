@@ -9,19 +9,22 @@
 
 #### Table of Contents
 
-[Demo](#demo) &nbsp;&nbsp;| &nbsp;&nbsp; [Installation](#installation) &nbsp;&nbsp; | &nbsp;&nbsp; [Usage](#usage) &nbsp;&nbsp; | &nbsp;&nbsp; [Contributing](#contributing) &nbsp;&nbsp; | &nbsp;&nbsp; [License](#license) &nbsp;&nbsp; |  &nbsp;&nbsp; [Questions](#questions)
+[Demo](#demo) &nbsp;&nbsp;| &nbsp;&nbsp; [Installation](#installation) &nbsp;&nbsp; | &nbsp;&nbsp; [Usage](#usage) &nbsp;&nbsp; | &nbsp;&nbsp; [Features](#features) &nbsp;&nbsp; | &nbsp;&nbsp; [Contributing](#contributing) &nbsp;&nbsp; | &nbsp;&nbsp; [License](#license) &nbsp;&nbsp; |  &nbsp;&nbsp; [Questions](#questions)
 
 ## Demo
 
-**Link to demo video:** https://drive.google.com/file/d/1xd_HuE9q4tzOcu_xlyZJOjw6m3T02Lbb/view
+**Link to demo video:** https://drive.google.com/file/d/1cfKtcvDu6JFgGs9VMLN-wfaQe09lehoB/view
 
-![Demo GIF](readmeImaeges/takenoteDemo.gif)
+![Demo GIF](readmeImages/takenoteDemo.gif)
 
 ## Usage
 
 - This application is meant to be used for taking notes on the go.
 - Quickly access the app from any device and use it to capture your thoughts before the busy pace of life clouds them from your memory.
 - Access stored notes, add, or delete entries from the /notes page. 
+
+## Features
+- Add, view, edit, and delete notes.
 
 ## Contributing
 
