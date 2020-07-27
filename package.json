@@ -1,14 +1,23 @@
 {
-  "name": "develop",
+  "name": "take-note",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"A note-taking application.\"",
   "main": "server.js",
-  "dependencies": {
-    "express": "^4.17.1",
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keycole/take-note.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keycole/take-note/issues"
+  },
+  "homepage": "https://github.com/keycole/take-note#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
