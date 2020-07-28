@@ -17,13 +17,8 @@
 
 ![Demo GIF](readmeImages/takenoteDemo.gif)
 
-## Usage
-
-- This application is meant to be used for taking notes on the go.
-- Quickly access the app from any device and use it to capture your thoughts before the busy pace of life clouds them from your memory.
-- Access stored notes, add, or delete entries from the /notes page. 
-
-## Installation
+ ## Installation
+ 
 - Make sure you have [Heroku](https://devcenter.heroku.com/articles/heroku-cli) installed on your machine
 - After Forking or Cloning the repository, navigate to the repository folder in your terminal and ```npm i``` to install node modules
 - Log into Heroku : ```heroku login```
@@ -33,7 +28,14 @@
 - Commit any changes you would like to make to the app as usual and then run the command : ```git push heroku master```
 - Go to your Heroku dashboard to find the link to your own personal "Take Note" app and start taking good notes! 
 
+## Usage
+
+- This application is meant to be used for taking notes on the go.
+- Quickly access the app from any device and use it to capture your thoughts before the busy pace of life clouds them from your memory.
+- Access stored notes, add, or delete entries from the /notes page.
+
 ## Features
+
 - Add, view, edit, and delete notes.
 
 ## Contributing
