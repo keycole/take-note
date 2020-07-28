@@ -23,6 +23,16 @@
 - Quickly access the app from any device and use it to capture your thoughts before the busy pace of life clouds them from your memory.
 - Access stored notes, add, or delete entries from the /notes page. 
 
+## Installation
+- Make sure you have [Heroku](https://devcenter.heroku.com/articles/heroku-cli) installed on your machine
+- After Forking or Cloning the repository, navigate to the repository folder in your terminal and ```npm i``` to install node modules
+- Log into Heroku : ```heroku login```
+- Run the command : ```git remote –v```
+- Run the command : ```heroku create```
+- Run ```git remote -v``` again to confirm you see the heroku remote links
+- Commit any changes you would like to make to the app as usual and then run the command : ```git push heroku master```
+- Go to your Heroku dashboard to find the link to your own personal "Take Note" app and start taking good notes! 
+
 ## Features
 - Add, view, edit, and delete notes.
 

@@ -12,15 +12,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // ROUTES
-// >> HTML ROUTES
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "/public/index.html"));
-});
-
-app.get("/notes", function(req, res){
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
-});
-
 // >> API ROUTES
 app.get("/api/notes", function(req, res){
     let notesJSON = fs.readFileSync("db/db.json") ||[];
@@ -51,6 +42,24 @@ app.post("/api/notes", function(req, res){
     res.send(
       console.log("Success! Your new note has been saved to the db.json file and the master id has been updated."));
 });
+
+// >> HTML ROUTES
+app.get("/notes", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
+
+// If no matching route is found default to home
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
+
+// app.get("/", function(req, res){
+//     res.sendFile(path.join(__dirname, "/public/index.html"));
+// });
+
+// app.get("/notes", function(req, res){
+//     res.sendFile(path.join(__dirname, "/public/notes.html"));
+// });
 
 //Saves Edited Note
 app.post("/api/notes/:id", function(req, res){
