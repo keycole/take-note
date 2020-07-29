@@ -204,7 +204,6 @@ var renderNoteList = function (notes) {
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function () {
   getNotes().then(function (data) {
-    console.log(`The data inside get and render notes is: ${JSON.stringify(data)}`);
     renderNoteList(data);
   });
 };
