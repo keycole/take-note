@@ -43,16 +43,6 @@ app.post("/api/notes", function(req, res){
       console.log("Success! Your new note has been saved to the db.json file and the master id has been updated."));
 });
 
-// >> HTML ROUTES
-app.get("/notes", function(req, res) {
-  res.sendFile(path.join(__dirname, "/public/notes.html"));
-});
-
-// If no matching route is found default to home
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
-});
-
 //Saves Edited Note
 app.post("/api/notes/:id", function(req, res){
   //Retrieves the updated note information
@@ -92,6 +82,16 @@ app.post("/api/notes/:id", function(req, res){
     console.log("Successful deletion! The db.json file has been updated.");
     res.json(JSON.parse(fs.readFileSync("db/db.json")));
   });
+
+// >> HTML ROUTES
+app.get("/notes", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
+
+// If no matching route is found default to home
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 
 // LISTENER to start the server
 app.listen(PORT, function() {
